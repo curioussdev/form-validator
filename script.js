@@ -5,6 +5,8 @@ formValidator = {
 
         let inputs = form.querySelectorAll('input');
 
+        formValidator.clearErrors();
+
         for(let i=0; i<inputs.length; i++){
             let input = inputs[i];
             let check = formValidator.checkInput(input);
@@ -53,8 +55,25 @@ formValidator = {
         errorElement.innerHTML = error;
 
         input.parentElement.insertBefore(errorElement, input.elementSibling  ) // posicionando a mensagem de erro abaixo do input
+    },
+    clearErrors: () => {
+        // clear red border color
+        let inputs = form.querySelectorAll('input');
+        for(let i=0; i<inputs.length; i++) {
+            inputs[i].style = '';
+        }
+
+
+
+        // clear error message
+        let errorElements = document.querySelectorAll('.error');
+        for(let i=0; i<errorElements.length; i++) {
+            errorElements[i].remove();
+            
+        }
+        
     }
-}
+};
 
 let form = document.querySelector('.bodyForm');
 form.addEventListener('submit', formValidator.handleSubmit);
