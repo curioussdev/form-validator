@@ -44,7 +44,15 @@ formValidator = {
         }
 
         return true;
+    },
+    showError:(input, error) => {
+        input.style.borderColor = '#ff0000';
 
+        let errorElement = document.createElement('div');
+        errorElement.classList.add('error');
+        errorElement.innerHTML = error;
+
+        input.parentElement.insertBefore(errorElement, input.elementSibling  ) // posicionando a mensagem de erro abaixo do input
     }
 }
 

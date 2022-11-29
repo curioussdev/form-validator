@@ -42,3 +42,11 @@ body{
     justify-content: center;
     text-align: center;
 }
+
+.error{
+    font-size: 12px;
+    background-color: #ff0000;
+    color: #fff;
+    padding: 5px;
+    border-radius: 5px;
+}
