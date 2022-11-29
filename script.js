@@ -11,10 +11,11 @@ formValidator = {
             if(check !== true){
                 send = false
                 // exibir erro
+                formValidator.showError(input, check);
             }
         }
 
-        send=false
+        
         if(send) {
             form.submit();
         }
@@ -22,17 +23,19 @@ formValidator = {
 
     checkInput: (input) => {
         // verifica cada uma das regras espcíficas de cada input
-        let rules = input.getAttributes('data-rules');
+        let rules = input.getAttribute('data-rules');
 
         if(rules !== null){
             rules = rules.split('|')
             for(let k in rules) {
-                 let rulesDatails = rules[k].split('');
+                 let rulesDatails = rules[k].split('|');
                  switch(rulesDatails[0]) {
                     case 'required':
-
+                        if(input.value == ''){
+                            return 'Campo obrigatório!';
+                        }
                     break;
-                        
+
                     case 'min':
 
                     break;
