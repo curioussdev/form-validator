@@ -1,0 +1,23 @@
+body{
+    margin: 0;
+}
+.screen{
+    display: flex;
+    height: 100vh;
+    
+}
+.leftside{
+    flex: 1;
+    display: flex;
+    
+    
+}
+.leftside img {
+    width: 65vw;
+    height: 100vh;
+    
+}
+.rightside{
+    width: 35vw;
+    background-color: #ccc;
+}
