@@ -44,6 +44,15 @@ formValidator = {
                             return 'O campo tem de ter pelo menos '+rulesDatails[1]+' caracteres';
                          }
                     break;
+
+                    case 'email':
+                        if(input.value != '') {
+                            let regex = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+
+                            if(!regex.test(input.value.toLowerCase())) {
+                                return 'Precisa informar um email válido!'
+                            }
+                        }
                  }
             }
         }
@@ -78,3 +87,16 @@ formValidator = {
 
 let form = document.querySelector('.bodyForm');
 form.addEventListener('submit', formValidator.handleSubmit);
+
+/*
+
+const emailRegex = /^[a-z0-9.]+@[a-z0-9]+\.[a-z]+\.[a-z]?$/i
+console.log('foo.bar@gmail.com =>', emailRegex.test('foo.bar@gmail.com'))
+console.log('foo.bar@gmail.com.br =>', emailRegex.test('foo.bar@gmail.com.br'))
+console.log('foo.bar@gmail.com.br.br =>', emailRegex.test('foo.bar@gmail.com.br.br'))
+console.log('foo.bar@gmail. =>', emailRegex.test('foo.bar@gmail.'))
+console.log('foo.bar@gmailcom =>', emailRegex.test('foo.bar@gmailcom'))
+console.log('foo.bargmail.com =>', emailRegex.test('foo.bargmail.com'))
+console.log('@gmail.com =>', emailRegex.test('@gmail.com'))
+
+*/
