@@ -30,16 +30,19 @@ formValidator = {
         if(rules !== null){
             rules = rules.split('|')
             for(let k in rules) {
-                 let rulesDatails = rules[k].split('|');
+                 let rulesDatails = rules[k].split('=');
+                
                  switch(rulesDatails[0]) {
                     case 'required':
                         if(input.value == ''){
-                            return 'Campo obrigatório!';
+                            return 'Campo não pode estar vazio!';
                         }
                     break;
 
                     case 'min':
-
+                         if(input.value.length < rulesDatails[1]) {
+                            return 'O campo tem de ter pelo menos '+rulesDatails[1]+' caracteres';
+                         }
                     break;
                  }
             }
@@ -62,8 +65,6 @@ formValidator = {
         for(let i=0; i<inputs.length; i++) {
             inputs[i].style = '';
         }
-
-
 
         // clear error message
         let errorElements = document.querySelectorAll('.error');
